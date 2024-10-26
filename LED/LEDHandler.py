@@ -8,6 +8,8 @@ class LEDHandler:
         GPIO.setmode(GPIO.BCM)
         # - Set LED Pins
         self.pins = pins
+        # - Set PWM LEDs
+        self.PWM_LEDs = []
         # - Initialize GPIO Pins
         for pin in self.pins:
             # - Setup GPIO Pin
@@ -22,4 +24,8 @@ class LEDHandler:
     # - Method to Turn LED Off
     def off(self, pin):
         GPIO.output(pin, GPIO.LOW)
-            
+    # - Method to Initialize PWM LEDs
+    def pwm(self):
+        self.PWM_LEDs = [GPIO.PWM(pin, 100) for pin in self.pins]
+        for led in self.leds:
+            led.start(0)
