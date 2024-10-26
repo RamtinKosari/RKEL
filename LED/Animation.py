@@ -27,6 +27,21 @@ class Animation:
                     time.sleep(delay)
                     self.leds.off(pin)
                     time.sleep(delay)
+            elif mode == 'serial-reverse':
+                # - Serial Reverse Blinking
+                for pin in reversed(self.leds.pins):
+                    self.leds.on(pin)
+                    time.sleep(delay)
+                    self.leds.off(pin)
+                    time.sleep(delay)
+            elif mode == 'serial-forward-backward':
+                # - Serial Forward Backward Blinking
+                for pin in self.leds.pins:
+                    self.leds.on(pin)
+                    time.sleep(delay)
+                for pin in reversed(self.leds.pins):
+                    self.leds.off(pin)
+                    time.sleep(delay)
             elif mode == 'parallel':
                 # - Parallel Blinking
                 for pin in self.leds.pins:
