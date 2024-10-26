@@ -1,5 +1,6 @@
 # - Import Necessary Libraries
 import RPi.GPIO as GPIO
+import random
 import time
 
 BOARD_MODELS = [

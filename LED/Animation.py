@@ -52,5 +52,14 @@ class Animation:
                 for pin in self.leds.pins:
                     self.leds.off(pin)
                 time.sleep(delay)
+            elif mode == 'random':
+                # - Random Blinking
+                for _ in range(len(self.leds.pins)):
+                    pin = random.choice(self.leds.pins)
+                    self.leds.on(pin)
+                    time.sleep(delay)
+                    self.leds.off(pin)
+                    time.sleep(delay)
             else:
                 pass
+    #
