@@ -7,7 +7,6 @@ class Animation:
     def __init__(self, pins):
         self.leds = LEDHandler(pins)
     # - Blink Animation
-    @staticmethod
     def blink(self, delay = 0.001, times = 5):
         for _ in range(times):
             for pin in self.leds.pins:
