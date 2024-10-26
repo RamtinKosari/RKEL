@@ -9,3 +9,5 @@ if __name__ == '__main__':
     animation.blink(0.01, 1, 'parallel')
     animation.blink(0.01, 1, 'serial-reverse')
     animation.blink(0.01, 1, 'serial-forward-backward')
+    # - Clear LEDs
+    animation.clear()

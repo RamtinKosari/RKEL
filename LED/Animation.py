@@ -54,5 +54,3 @@ class Animation:
                 time.sleep(delay)
             else:
                 pass
-        # - Clear LEDs
-        self.clear()
