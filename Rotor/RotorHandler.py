@@ -16,7 +16,7 @@ class RotorHandler:
         # - Set LED State
         GPIO.output(pin, GPIO.LOW)
         # - Initialize PWM Rotor
-        self.PWM_ROTOR = GPIO.PWM(self.pin, 100)
+        self.PWM_ROTOR = GPIO.PWM(self.pin, 1000)
         # - Start PWM Rotor at 0 Duty Cycle
         self.PWM_ROTOR.start(0)
         # - Show Log
