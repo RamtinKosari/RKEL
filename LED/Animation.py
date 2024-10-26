@@ -71,7 +71,7 @@ class Animation:
             else:
                 pass
     # - Fade Animation
-    def fade(self, delay = 0.001, times = 5, mode = 'serial', fade_array = AnimationArrays.Fade.Normal, array_reverse = False):
+    def fade(self, delay = 0.001, times = 5, mode = 'serial', fade_array = AnimationArrays.Fade.Normal, array_reverse = False, fade_step = 1):
         # - Show Log
         printRKEL(RKEL_LABEL, "Fading LEDs for {}{}{} Times with {}{}{} Seconds Delay in {}{}{} Mode ...".format(LIGHT_INFO, times, RESET, LIGHT_INFO, delay, RESET, LIGHT_INFO, mode, RESET), force = True)
         # - Check Reverse
@@ -86,7 +86,7 @@ class Animation:
                 # - Fade In
                 for fade in fade_array:
                     for index in fade:
-                        for duty_cycle in range(0, 101):
+                        for duty_cycle in range(0, 101, fade_step):
                             self.leds.PWM_LEDs[index].ChangeDutyCycle(duty_cycle)
                             time.sleep(delay)
             else:
