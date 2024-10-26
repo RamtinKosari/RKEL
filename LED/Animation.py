@@ -14,7 +14,7 @@ class Animation:
         # - Cleanup GPIO Settings
         GPIO.cleanup()
     # - Blink Animation
-    def blink(self, delay = 0.001, times = 5, mode = 'serial'):
+    def blink(self, delay = 0.001, times = 5, mode = 'serial', blink_array = [[0, 2, 4, 6], [1, 3, 5, 7]]):
         # - Show Log
         printRKEL(RKEL_LABEL, "Blinking LEDs for {}{}{} Times with {}{}{} Seconds Delay in {}{}{} Mode ...".format(LIGHT_INFO, times, RESET, LIGHT_INFO, delay, RESET, LIGHT_INFO, mode, RESET), force = True)
         # - Blink LEDs
@@ -59,6 +59,15 @@ class Animation:
                     self.leds.on(pin)
                     time.sleep(delay)
                     self.leds.off(pin)
+                    time.sleep(delay)
+            elif mode == 'blink-array':
+                # - Blink Array
+                for blink in blink_array:
+                    for pin in blink:
+                        self.leds.on(pin)
+                    time.sleep(delay)
+                    for pin in blink:
+                        self.leds.off(pin)
                     time.sleep(delay)
             else:
                 pass
