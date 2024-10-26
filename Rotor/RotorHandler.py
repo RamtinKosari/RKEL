@@ -22,7 +22,7 @@ class RotorHandler:
         # - Show Log
         printRKEL(RKEL_LABEL, SUCCESS, "Rotor Pin {}{}{} Initialized".format(LIGHT_INFO, pin, RESET), force = True)
     # - Method to Power Rotor
-    def power(self, pin, percentage: int):
+    def power(self, percentage: int):
         # - Show Log
         printRKEL(RKEL_LABEL, "Powering Rotor at {}{}{}% ...".format(LIGHT_INFO, percentage, RESET), force = True)
         # - Set Duty Cycle
