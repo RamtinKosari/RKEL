@@ -36,4 +36,4 @@ class RotorHandler:
         # - Show Log
         printRKEL(RKEL_LABEL, "Powering Rotor at {}{}{}% ...".format(LIGHT_INFO, percentage, RESET), force = True)
         # - Set Duty Cycle
-        self.PWM_ROTOR.ChangeDutyCycle(100)
+        self.PWM_ROTOR.ChangeDutyCycle(percentage)
