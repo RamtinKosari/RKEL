@@ -89,6 +89,13 @@ class Animation:
                         for duty_cycle in range(0, 101, fade_step):
                             self.leds.PWM_LEDs[index].ChangeDutyCycle(duty_cycle)
                             time.sleep(delay)
+            elif mode == 'fade-out':
+                # - Fade Out
+                for fade in fade_array:
+                    for index in fade:
+                        for duty_cycle in range(100, -1, -fade_step):
+                            self.leds.PWM_LEDs[index].ChangeDutyCycle(duty_cycle)
+                            time.sleep(delay)
             else:
                 pass
 
