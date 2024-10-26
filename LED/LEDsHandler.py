@@ -1,5 +1,5 @@
 # - Include LED Handler Module
-from LEDHandler import *
+from .LEDHandler import *
 
 # - LEDs Handler Class Definition
 class LEDsHandler:
