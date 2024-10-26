@@ -22,7 +22,7 @@ class Animation:
         printRKEL(RKEL_LABEL, "Blinking LEDs for {}{}{} Times with {}{}{} Seconds Delay in {}{}{} Mode ...".format(LIGHT_INFO, times, RESET, LIGHT_INFO, delay, RESET, LIGHT_INFO, mode, RESET), force = True)
         # - Check Reverse
         if array_reverse:
-            blink_array = blink_array.reverse()
+            blink_array = list(reversed(blink_array))
         # - Blink LEDs
         for _ in range(times):
             # - Check Mode
