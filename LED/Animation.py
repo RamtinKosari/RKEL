@@ -39,9 +39,11 @@ class Animation:
                 for pin in self.leds.pins:
                     self.leds.on(pin)
                     time.sleep(delay)
-                for pin in reversed(self.leds.pins):
                     self.leds.off(pin)
+                for pin in reversed(self.leds.pins):
+                    self.leds.on(pin)
                     time.sleep(delay)
+                    self.leds.off(pin)
             elif mode == 'parallel':
                 # - Parallel Blinking
                 for pin in self.leds.pins:
