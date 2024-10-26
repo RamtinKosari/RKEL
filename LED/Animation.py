@@ -1,6 +1,9 @@
 # - Include LEDs Handler Module
 from .LEDHandler import *
 
+# - Include Animation Arrays
+from .AnimationArrays import *
+
 # - Animation Class Definition
 class Animation:
     # - Method to Initialize Animation
