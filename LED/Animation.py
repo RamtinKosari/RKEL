@@ -1,5 +1,5 @@
 # - Include LEDs Handler Module
-from LEDsHandler import *
+from .LEDsHandler import *
 
 # - Animation Class Definition
 class Animation:
