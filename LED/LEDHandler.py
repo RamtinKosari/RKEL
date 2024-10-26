@@ -13,7 +13,7 @@ class LEDHandler:
             # - Setup GPIO Pin
             GPIO.setup(pin, GPIO.OUT)
             # - Set LED State
-            GPIO.output(self.pin, GPIO.LOW)
+            GPIO.output(pin, GPIO.LOW)
             # - Show Log
             printRKEL(RKEL_LABEL, SUCCESS, "LED Pin {}{}{} Initialized".format(LIGHT_INFO, pin, RESET), force = True)
     # - Method to Turn LED On
