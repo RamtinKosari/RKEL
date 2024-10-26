@@ -15,6 +15,9 @@ class Animation:
         GPIO.cleanup()
     # - Blink Animation
     def blink(self, delay = 0.001, times = 5, mode = 'serial'):
+        # - Show Log
+        printRKEL(RKEL_LABEL, INFO, "Blinking LEDs for {}{}{} Times with {}{}{} Delay in {}{}{} Mode".format(LIGHT_INFO, times, RESET, LIGHT_INFO, delay, RESET, LIGHT_INFO, mode, RESET), force = True)
+        # - Blink LEDs
         for _ in range(times):
             # - Check Mode
             if mode == 'serial':
