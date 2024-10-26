@@ -27,5 +27,5 @@ class LEDHandler:
     # - Method to Initialize PWM LEDs
     def pwm(self):
         self.PWM_LEDs = [GPIO.PWM(pin, 100) for pin in self.pins]
-        for led in self.leds:
-            led.start(0)
+        for pwm_leds in self.PWM_LEDs:
+            pwm_leds.start(0)
