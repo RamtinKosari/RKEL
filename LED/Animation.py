@@ -70,4 +70,72 @@ class Animation:
                     time.sleep(delay)
             else:
                 pass
-    #
+    # - Fade Animation
+    def fade(self, delay = 0.001, times = 5, mode = 'serial', fade_array = [[0, 2, 4, 6], [1, 3, 5, 7]], array_reverse = False):
+        # - Show Log
+        printRKEL(RKEL_LABEL, "Fading LEDs for {}{}{} Times with {}{}{} Seconds Delay in {}{}{} Mode ...".format(LIGHT_INFO, times, RESET, LIGHT_INFO, delay, RESET, LIGHT_INFO, mode, RESET), force = True)
+        # - Check Reverse
+        if array_reverse:
+            fade_array = list(reversed(fade_array))
+        # - Fade LEDs
+        for _ in range(times):
+            # - Check Mode
+            if mode == 'serial':
+                # - Serial Fading
+                for pin in self.leds.pins:
+                    for duty in range(0, 101, 5):
+                        self.leds.pwm.ChangeDutyCycle(duty)
+                        time.sleep(delay)
+                    for duty in range(100, -1, -5):
+                        self.leds.pwm.ChangeDutyCycle(duty)
+                        time.sleep(delay)
+            elif mode == 'serial-forward-backward':
+                # - Serial Forward Backward Fading
+                for pin in self.leds.pins:
+                    for duty in range(0, 101, 5):
+                        self.leds.pwm.ChangeDutyCycle(duty)
+                        time.sleep(delay)
+                    for duty in range(100, -1, -5):
+                        self.leds.pwm.ChangeDutyCycle(duty)
+                        time.sleep(delay)
+                for pin in reversed(self.leds.pins):
+                    for duty in range(0, 101, 5):
+                        self.leds.pwm.ChangeDutyCycle(duty)
+                        time.sleep(delay)
+                    for duty in range(100, -1, -5):
+                        self.leds.pwm.ChangeDutyCycle(duty)
+                        time.sleep(delay)
+            elif mode == 'parallel':
+                # - Parallel Fading
+                for duty in range(0, 101, 5):
+                    for pin in self.leds.pins:
+                        self.leds.pwm.ChangeDutyCycle(duty)
+                    time.sleep(delay)
+                for duty in range(100, -1, -5):
+                    for pin in self.leds.pins:
+                        self.leds.pwm.ChangeDutyCycle(duty)
+                    time.sleep(delay)
+            elif mode == 'random':
+                # - Random Fading
+                for _ in range(len(self.leds.pins)):
+                    pin = random.choice(self.leds.pins)
+                    for duty in range(0, 101, 5):
+                        self.leds.pwm.ChangeDutyCycle(duty)
+                        time.sleep(delay)
+                    for duty in range(100, -1, -5):
+                        self.leds.pwm.ChangeDutyCycle(duty)
+                        time.sleep(delay)
+            elif mode == 'fade-array':
+                # - Fade Array
+                for fade in fade_array:
+                    for duty in range(0, 101, 5):
+                        for index in fade:
+                            self.leds.pwm.ChangeDutyCycle(duty)
+                    time.sleep(delay)
+                    for duty in range(100, -1, -5):
+                        for index in fade:
+                            self.leds.pwm.ChangeDutyCycle(duty)
+                    time.sleep(delay)
+            else:
+                pass
+    # - Wave Animation
