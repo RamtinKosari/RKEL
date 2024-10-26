@@ -63,11 +63,11 @@ class Animation:
             elif mode == 'blink-array':
                 # - Blink Array
                 for blink in blink_array:
-                    for pin in blink:
-                        self.leds.on(pin)
+                    for index in blink:
+                        self.leds.on(self.leds.pins[index])
                     time.sleep(delay)
-                    for pin in blink:
-                        self.leds.off(pin)
+                    for index in blink:
+                        self.leds.off(self.leds.pins[index])
                     time.sleep(delay)
             else:
                 pass
